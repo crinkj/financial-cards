@@ -45,3 +45,12 @@ class CompanyScore(Base):
     @raw_metrics_dict.setter
     def raw_metrics_dict(self, value: dict):
         self.raw_metrics = json.dumps(value)
+
+
+class FundamentalsCache(Base):
+    __tablename__ = "fundamentals_cache"
+
+    id = Column(Integer, primary_key=True, autoincrement=True)
+    ticker = Column(String(10), nullable=False, unique=True, index=True)
+    data_json = Column(Text, nullable=False)
+    fetched_at = Column(DateTime, nullable=False, default=datetime.utcnow)
