@@ -18,6 +18,29 @@ def trigger_batch_update(background_tasks: BackgroundTasks):
     return {"status": "Batch update started in background"}
 
 
+@router.post("/upload-data")
+def upload_data(records: list[dict], db: Session = Depends(get_db)):
+    """Bulk upload scored company data (run batch locally, upload here)."""
+    from datetime import datetime
+    created = 0
+    updated = 0
+    for item in records:
+        existing = db.query(CompanyScore).filter(CompanyScore.ticker == item["ticker"]).first()
+        if existing:
+            for key, val in item.items():
+                if key != "ticker" and hasattr(existing, key):
+                    setattr(existing, key, val)
+            existing.updated_at = datetime.utcnow()
+            updated += 1
+        else:
+            record = CompanyScore(**{k: v for k, v in item.items() if hasattr(CompanyScore, k)})
+            record.updated_at = datetime.utcnow()
+            db.add(record)
+            created += 1
+    db.commit()
+    return {"created": created, "updated": updated}
+
+
 @router.get("", response_model=list[CardSummary])
 def list_cards(
     sector: Optional[str] = Query(None, description="Filter by sector"),
