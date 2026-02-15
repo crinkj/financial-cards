@@ -87,6 +87,13 @@ export const translations = {
   sector_communication: { en: 'Comms', ko: '통신' },
   sector_utilities: { en: 'Utility', ko: '유틸' },
   sector_real_estate: { en: 'Realty', ko: '부동산' },
+  sector_kr_technology: { en: 'KR Tech', ko: '한국 테크' },
+  sector_kr_financials: { en: 'KR Finance', ko: '한국 금융' },
+  sector_kr_automotive: { en: 'KR Auto', ko: '한국 자동차' },
+  sector_kr_bio: { en: 'KR Bio', ko: '한국 바이오' },
+  sector_kr_consumer: { en: 'KR Consumer', ko: '한국 소비재' },
+  sector_kr_energy: { en: 'KR Energy', ko: '한국 에너지' },
+  sector_kr_industrial: { en: 'KR Industry', ko: '한국 산업' },
 } as const;
 
 export type TranslationKey = keyof typeof translations;
@@ -103,6 +110,13 @@ const SECTOR_KEY_MAP: Record<string, TranslationKey> = {
   'Communication Services': 'sector_communication',
   'Utilities': 'sector_utilities',
   'Real Estate': 'sector_real_estate',
+  'KR_Technology': 'sector_kr_technology',
+  'KR_Financials': 'sector_kr_financials',
+  'KR_Automotive': 'sector_kr_automotive',
+  'KR_Bio & Healthcare': 'sector_kr_bio',
+  'KR_Consumer & Retail': 'sector_kr_consumer',
+  'KR_Energy & Materials': 'sector_kr_energy',
+  'KR_Industrial': 'sector_kr_industrial',
 };
 
 export function translateSector(sector: string, lang: Lang): string {
@@ -149,4 +163,11 @@ export const SECTOR_TYPE_COLORS: Record<string, string> = {
   'Communication Services': 'bg-violet-500/30 text-violet-300 border-violet-500/50',
   'Utilities': 'bg-cyan-500/30 text-cyan-300 border-cyan-500/50',
   'Real Estate': 'bg-amber-500/30 text-amber-300 border-amber-500/50',
+  'KR_Technology': 'bg-blue-600/30 text-blue-200 border-blue-600/50',
+  'KR_Financials': 'bg-emerald-600/30 text-emerald-200 border-emerald-600/50',
+  'KR_Automotive': 'bg-red-500/30 text-red-300 border-red-500/50',
+  'KR_Bio & Healthcare': 'bg-pink-600/30 text-pink-200 border-pink-600/50',
+  'KR_Consumer & Retail': 'bg-orange-600/30 text-orange-200 border-orange-600/50',
+  'KR_Energy & Materials': 'bg-yellow-600/30 text-yellow-200 border-yellow-600/50',
+  'KR_Industrial': 'bg-slate-500/30 text-slate-200 border-slate-500/50',
 };

@@ -101,30 +101,35 @@ def fetch_fundamentals_batch(
                         logger.warning(f"No fundamental data for {ticker}")
                         break
 
+                    shares = _safe_get(info, "sharesOutstanding", 0)
                     results[ticker] = {
                         "company_name": info.get("shortName", ticker),
                         "sector": info.get("sector", "Unknown"),
                         "market_cap": _safe_get(info, "marketCap", 0),
+                        # Growth
                         "revenue_growth": _safe_get(info, "revenueGrowth", 0),
                         "earnings_growth": _safe_get(info, "earningsGrowth", 0),
                         "revenue_per_share": _safe_get(info, "revenuePerShare", 0),
                         "earnings_quarterly_growth": _safe_get(info, "earningsQuarterlyGrowth", 0),
+                        # Stability
                         "debt_to_equity": _safe_get(info, "debtToEquity", 0),
                         "current_ratio": _safe_get(info, "currentRatio", 1),
                         "quick_ratio": _safe_get(info, "quickRatio", 1),
                         "interest_coverage": _safe_get(info, "interestCoverage", 0),
+                        # Cash flow
                         "free_cashflow": _safe_get(info, "freeCashflow", 0),
                         "operating_cashflow": _safe_get(info, "operatingCashflow", 0),
                         "fcf_per_share": (
-                            _safe_get(info, "freeCashflow", 0) / _safe_get(info, "sharesOutstanding", 1)
-                            if _safe_get(info, "sharesOutstanding", 0) > 0
-                            else 0
+                            _safe_get(info, "freeCashflow", 0) / shares
+                            if shares > 0 else 0
                         ),
+                        # Efficiency
                         "return_on_equity": _safe_get(info, "returnOnEquity", 0),
                         "return_on_assets": _safe_get(info, "returnOnAssets", 0),
                         "operating_margins": _safe_get(info, "operatingMargins", 0),
                         "profit_margins": _safe_get(info, "profitMargins", 0),
                         "gross_margins": _safe_get(info, "grossMargins", 0),
+                        # Valuation
                         "beta": _safe_get(info, "beta", 1.0),
                         "trailing_pe": _safe_get(info, "trailingPE", 0),
                         "forward_pe": _safe_get(info, "forwardPE", 0),
@@ -132,6 +137,23 @@ def fetch_fundamentals_batch(
                         "trailing_eps": _safe_get(info, "trailingEps", 0),
                         "forward_eps": _safe_get(info, "forwardEps", 0),
                         "dividend_yield": _safe_get(info, "dividendYield", 0),
+                        # Additional metrics (new)
+                        "total_revenue": _safe_get(info, "totalRevenue", 0),
+                        "net_income": _safe_get(info, "netIncomeToCommon", 0),
+                        "ebitda": _safe_get(info, "ebitda", 0),
+                        "total_debt": _safe_get(info, "totalDebt", 0),
+                        "total_cash": _safe_get(info, "totalCash", 0),
+                        "book_value": _safe_get(info, "bookValue", 0),
+                        "price_to_book": _safe_get(info, "priceToBook", 0),
+                        "enterprise_value": _safe_get(info, "enterpriseValue", 0),
+                        "ev_to_ebitda": _safe_get(info, "enterpriseToEbitda", 0),
+                        "ev_to_revenue": _safe_get(info, "enterpriseToRevenue", 0),
+                        "shares_outstanding": shares,
+                        "fifty_day_average": _safe_get(info, "fiftyDayAverage", 0),
+                        "two_hundred_day_average": _safe_get(info, "twoHundredDayAverage", 0),
+                        "target_mean_price": _safe_get(info, "targetMeanPrice", 0),
+                        "recommendation_mean": _safe_get(info, "recommendationMean", 0),
+                        "number_of_analyst_opinions": _safe_get(info, "numberOfAnalystOpinions", 0),
                     }
                     break  # success
 
