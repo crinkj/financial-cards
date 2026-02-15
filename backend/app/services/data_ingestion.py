@@ -1,4 +1,5 @@
 import logging
+import time
 from typing import Optional
 
 import numpy as np
@@ -115,5 +116,7 @@ def fetch_all_companies() -> list[dict]:
                 # Override sector with our curated mapping for consistency
                 data["sector"] = sector
                 all_data.append(data)
+            time.sleep(2)  # Rate limit: avoid Yahoo Finance 429 errors
+        time.sleep(5)  # Extra pause between sectors
     logger.info(f"Fetched data for {len(all_data)} companies")
     return all_data
