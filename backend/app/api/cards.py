@@ -1,7 +1,7 @@
 import json
 from typing import Optional
 
-from fastapi import APIRouter, Depends, HTTPException, Query
+from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException, Query
 from sqlalchemy.orm import Session
 
 from app.database import get_db
@@ -9,6 +9,13 @@ from app.models.score import CompanyScore
 from app.schemas.card import CardSummary, CardDetail, AbilityScores
 
 router = APIRouter(prefix="/api/cards", tags=["cards"])
+
+
+@router.post("/batch-update")
+def trigger_batch_update(background_tasks: BackgroundTasks):
+    from app.scripts.batch_update import run_batch_update
+    background_tasks.add_task(run_batch_update)
+    return {"status": "Batch update started in background"}
 
 
 @router.get("", response_model=list[CardSummary])
