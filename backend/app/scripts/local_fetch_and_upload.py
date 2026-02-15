@@ -97,21 +97,31 @@ def main():
             "raw_metrics": json.dumps(item.get("raw_metrics", {})),
         })
 
-    # Phase 6: Upload to remote backend
-    logger.info(f"Uploading {len(upload_records)} records to {args.api_url}...")
-    resp = requests.post(
-        f"{args.api_url}/api/cards/upload-data",
-        json=upload_records,
-        headers={"X-Api-Key": args.api_key},
-        timeout=30,
-    )
+    # Phase 6: Upload to remote backend in chunks (Render free tier has 30s timeout)
+    CHUNK_SIZE = 50
+    total_created = 0
+    total_updated = 0
+    chunks = [upload_records[i:i + CHUNK_SIZE] for i in range(0, len(upload_records), CHUNK_SIZE)]
+    logger.info(f"Uploading {len(upload_records)} records in {len(chunks)} chunks to {args.api_url}...")
 
-    if resp.status_code == 200:
-        result = resp.json()
-        logger.info(f"Upload success: {result['created']} created, {result['updated']} updated")
-    else:
-        logger.error(f"Upload failed: {resp.status_code} - {resp.text}")
-        sys.exit(1)
+    for idx, chunk in enumerate(chunks):
+        logger.info(f"  Chunk {idx + 1}/{len(chunks)} ({len(chunk)} records)...")
+        resp = requests.post(
+            f"{args.api_url}/api/cards/upload-data",
+            json=chunk,
+            headers={"X-Api-Key": args.api_key},
+            timeout=120,
+        )
+        if resp.status_code == 200:
+            result = resp.json()
+            total_created += result["created"]
+            total_updated += result["updated"]
+            logger.info(f"  Chunk {idx + 1} OK: {result['created']} created, {result['updated']} updated")
+        else:
+            logger.error(f"  Chunk {idx + 1} failed: {resp.status_code} - {resp.text}")
+            sys.exit(1)
+
+    logger.info(f"Upload complete: {total_created} created, {total_updated} updated")
 
 
 if __name__ == "__main__":
