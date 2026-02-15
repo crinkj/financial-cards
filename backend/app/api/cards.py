@@ -1,7 +1,9 @@
 import json
+import os
+from datetime import datetime
 from typing import Optional
 
-from fastapi import APIRouter, BackgroundTasks, Depends, HTTPException, Query
+from fastapi import APIRouter, BackgroundTasks, Depends, Header, HTTPException, Query
 from sqlalchemy.orm import Session
 
 from app.database import get_db
@@ -10,18 +12,24 @@ from app.schemas.card import CardSummary, CardDetail, AbilityScores
 
 router = APIRouter(prefix="/api/cards", tags=["cards"])
 
+ADMIN_API_KEY = os.getenv("ADMIN_API_KEY", "")
 
-@router.post("/batch-update")
+
+def verify_api_key(x_api_key: str = Header(...)):
+    if not ADMIN_API_KEY or x_api_key != ADMIN_API_KEY:
+        raise HTTPException(status_code=403, detail="Invalid API key")
+
+
+@router.post("/batch-update", dependencies=[Depends(verify_api_key)])
 def trigger_batch_update(background_tasks: BackgroundTasks):
     from app.scripts.batch_update import run_batch_update
     background_tasks.add_task(run_batch_update)
     return {"status": "Batch update started in background"}
 
 
-@router.post("/upload-data")
+@router.post("/upload-data", dependencies=[Depends(verify_api_key)])
 def upload_data(records: list[dict], db: Session = Depends(get_db)):
-    """Bulk upload scored company data (run batch locally, upload here)."""
-    from datetime import datetime
+    """Bulk upload scored company data. Requires X-Api-Key header."""
     created = 0
     updated = 0
     for item in records:
