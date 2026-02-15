@@ -1,0 +1,21 @@
+{
+  "name": "Stockmon",
+  "short_name": "Stockmon",
+  "description": "Real stocks. Battle stats. Collect the market.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050510",
+  "theme_color": "#ffd700",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

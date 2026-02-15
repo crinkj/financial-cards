@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3:*)",
+      "Bash(pip install:*)",
+      "Bash(node --version:*)",
+      "Bash(npm install:*)",
+      "Bash(pip3:*)",
+      "Bash(source:*)",
+      "Bash(/opt/homebrew/bin/python3.13:*)",
+      "Bash(python -m pytest:*)",
+      "Bash(npx next build)",
+      "Bash(python -m app.scripts.batch_update:*)",
+      "Bash(python:*)",
+      "Bash(uvicorn app.main:app:*)",
+      "Bash(npm run dev:*)",
+      "Bash(curl:*)",
+      "Bash(git init)",
+      "Bash(gh auth:*)",
+      "Bash(git add:*)"
+    ]
+  }
+}

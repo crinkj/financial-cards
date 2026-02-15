@@ -1,0 +1,179 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background: radial-gradient(ellipse at 50% 0%, #1a103d 0%, #0a0a1a 50%, #050510 100%);
+  min-height: 100vh;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+
+/* ========== GAME CARD EFFECTS ========== */
+
+/* Holographic shimmer on S-grade cards */
+@keyframes holo-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.card-holo::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    105deg,
+    transparent 20%,
+    rgba(255, 215, 0, 0.08) 30%,
+    rgba(255, 255, 255, 0.12) 50%,
+    rgba(255, 215, 0, 0.08) 70%,
+    transparent 80%
+  );
+  background-size: 200% 100%;
+  animation: holo-shimmer 3s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Animated gradient border wrapper */
+@keyframes border-rotate {
+  0% { --angle: 0deg; }
+  100% { --angle: 360deg; }
+}
+
+.card-border-glow {
+  position: relative;
+}
+.card-border-glow::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 18px;
+  padding: 2px;
+  background: conic-gradient(from var(--angle, 0deg), var(--glow-1), var(--glow-2), var(--glow-1));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: border-rotate 4s linear infinite;
+  pointer-events: none;
+}
+
+/* Grade-specific glow variables */
+.glow-s { --glow-1: #ffd700; --glow-2: #ff8c00; }
+.glow-a { --glow-1: #a855f7; --glow-2: #ec4899; }
+.glow-b { --glow-1: #3b82f6; --glow-2: #06b6d4; }
+.glow-c { --glow-1: #22c55e; --glow-2: #14b8a6; }
+.glow-d { --glow-1: #6b7280; --glow-2: #475569; }
+
+/* Floating animation for cards */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-6px); }
+}
+.card-float:hover {
+  animation: float 2s ease-in-out infinite;
+}
+
+/* Pulse glow for grade badge */
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 8px var(--badge-color); }
+  50% { box-shadow: 0 0 20px var(--badge-color), 0 0 40px var(--badge-color); }
+}
+.badge-pulse {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Score counter animation */
+@keyframes count-up {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.score-animate {
+  animation: count-up 0.4s ease-out;
+}
+
+/* Sparkle effect for S-grade */
+@keyframes sparkle {
+  0%, 100% { opacity: 0; transform: scale(0) rotate(0deg); }
+  50% { opacity: 1; transform: scale(1) rotate(180deg); }
+}
+
+/* Loading spinner - pokeball style */
+@keyframes spin-bounce {
+  0% { transform: rotate(0deg) scale(1); }
+  25% { transform: rotate(90deg) scale(1.1); }
+  50% { transform: rotate(180deg) scale(1); }
+  75% { transform: rotate(270deg) scale(1.1); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+.loader-game {
+  animation: spin-bounce 1.2s ease-in-out infinite;
+}
+
+/* Hero text gradient */
+.text-gradient-gold {
+  background: linear-gradient(135deg, #ffd700, #ff8c00, #ffd700);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Rank badge shine */
+@keyframes shine {
+  0% { left: -100%; }
+  100% { left: 200%; }
+}
+.rank-shine {
+  position: relative;
+  overflow: hidden;
+}
+.rank-shine::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+  animation: shine 3s ease-in-out infinite;
+}
+
+/* Price change flash */
+.price-up { text-shadow: 0 0 8px rgba(34, 197, 94, 0.5); }
+.price-down { text-shadow: 0 0 8px rgba(239, 68, 68, 0.5); }
+
+/* Card grid stagger entrance */
+@keyframes card-enter {
+  from { opacity: 0; transform: translateY(20px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.card-grid-item {
+  animation: card-enter 0.4s ease-out both;
+}
+
+/* Modal backdrop */
+.modal-backdrop {
+  backdrop-filter: blur(12px) saturate(150%);
+}
+
+/* Sector type pill */
+.type-pill {
+  font-size: 10px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  border-width: 1px;
+}
+
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
