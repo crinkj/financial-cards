@@ -12,27 +12,27 @@ interface DailyTop10Props {
 function RankBadge({ rank }: { rank: number }) {
   if (rank === 1) {
     return (
-      <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-yellow-400 to-amber-600 flex items-center justify-center font-black text-lg text-black rank-shine">
+      <div className="w-10 h-10 rounded-xl bg-emerald-500 flex items-center justify-center font-black text-lg text-white rank-shine">
         {rank}
       </div>
     );
   }
   if (rank === 2) {
     return (
-      <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-gray-300 to-gray-500 flex items-center justify-center font-black text-lg text-black">
+      <div className="w-10 h-10 rounded-xl bg-slate-400 flex items-center justify-center font-black text-lg text-slate-900">
         {rank}
       </div>
     );
   }
   if (rank === 3) {
     return (
-      <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-600 to-amber-800 flex items-center justify-center font-black text-lg text-black">
+      <div className="w-10 h-10 rounded-xl bg-amber-600 flex items-center justify-center font-black text-lg text-white">
         {rank}
       </div>
     );
   }
   return (
-    <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center font-black text-lg text-white/40">
+    <div className="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center font-bold text-lg text-slate-400">
       {rank}
     </div>
   );
@@ -53,15 +53,15 @@ export default function DailyTop10({ rankings }: DailyTop10Props) {
             key={entry.ticker}
             className="card-grid-item flex items-center gap-4 rounded-xl px-4 py-3 transition-all hover:scale-[1.01]"
             style={{
-              animationDelay: `${index * 0.06}s`,
-              background: `linear-gradient(135deg, ${color}08 0%, rgba(15,15,35,0.8) 100%)`,
-              border: `1px solid ${color}20`,
+              animationDelay: `${index * 0.05}s`,
+              background: '#1E293B',
+              border: '1px solid rgba(51, 65, 85, 0.6)',
             }}
           >
             <RankBadge rank={entry.rank} />
             <div className="flex-1 min-w-0">
-              <p className="text-white font-bold text-sm truncate">
-                {entry.company_name} <span className="text-white/30">({entry.ticker})</span>
+              <p className="text-white font-semibold text-sm truncate">
+                {entry.company_name} <span className="text-slate-500">({entry.ticker})</span>
               </p>
               <span className={`type-pill ${typeColor} mt-0.5 inline-block`}>
                 {translateSector(entry.sector, lang)}

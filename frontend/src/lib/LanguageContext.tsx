@@ -68,7 +68,7 @@ export function LanguageToggle() {
   return (
     <button
       onClick={() => setLang(lang === 'en' ? 'ko' : 'en')}
-      className="px-2 py-1 rounded-md bg-white/10 hover:bg-white/20 text-white text-xs font-medium transition-colors"
+      className="px-2.5 py-1 rounded-md border border-slate-700 hover:border-emerald-500/40 text-slate-400 hover:text-emerald-400 text-xs font-medium transition-colors"
       title={lang === 'en' ? 'Switch to Korean' : 'Switch to English'}
     >
       {lang === 'en' ? '한국어' : 'EN'}

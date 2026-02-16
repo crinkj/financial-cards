@@ -23,9 +23,9 @@ function formatMetric(value: number | null | undefined, type: 'pct' | 'ratio' | 
 
 function MetricRow({ label, value }: { label: string; value: string }) {
   return (
-    <div className="flex justify-between py-1 border-b border-white/5">
-      <span className="text-white/40 text-[11px]">{label}</span>
-      <span className="text-white font-mono text-[11px] font-bold">{value}</span>
+    <div className="flex justify-between py-1 border-b border-slate-700/50">
+      <span className="text-slate-400 text-[11px]">{label}</span>
+      <span className="text-white font-mono text-[11px] font-semibold">{value}</span>
     </div>
   );
 }
@@ -34,7 +34,7 @@ function SectionLabel({ label, color }: { label: string; color: string }) {
   return (
     <div className="flex items-center gap-2 mt-2.5 mb-1">
       <div className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: color }} />
-      <p className="text-[10px] uppercase tracking-wider font-bold" style={{ color: `${color}cc` }}>
+      <p className="text-[10px] uppercase tracking-wider font-semibold" style={{ color: `${color}cc` }}>
         {label}
       </p>
     </div>
@@ -53,19 +53,19 @@ export default function CardBack({ card }: CardBackProps) {
       <div
         className="w-full h-full rounded-2xl p-5 flex flex-col relative z-10"
         style={{
-          background: `linear-gradient(160deg, ${color}08 0%, #0f0f23 20%, #12122a 100%)`,
+          background: `linear-gradient(160deg, ${color}05 0%, #0F172A 20%, #1E293B 100%)`,
         }}
       >
         {/* Header */}
-        <div className="flex items-center justify-between mb-2 pb-2 border-b border-white/10">
+        <div className="flex items-center justify-between mb-2 pb-2 border-b border-slate-700">
           <div className="min-w-0 flex-1">
-            <h3 className="text-white font-black text-sm truncate">
-              {card.company_name} <span className="text-white/40">({card.ticker})</span>
+            <h3 className="text-white font-bold text-sm truncate">
+              {card.company_name} <span className="text-slate-500">({card.ticker})</span>
             </h3>
           </div>
           <div
-            className="text-xs font-black px-2.5 py-1 rounded-lg ml-2 shrink-0"
-            style={{ color, backgroundColor: `${color}18`, border: `1px solid ${color}33` }}
+            className="text-xs font-bold px-2.5 py-1 rounded-lg ml-2 shrink-0"
+            style={{ color, backgroundColor: `${color}12`, border: `1px solid ${color}25` }}
           >
             {t('back_score')} {card.total_score.toFixed(1)}
           </div>
@@ -81,7 +81,7 @@ export default function CardBack({ card }: CardBackProps) {
           <MetricRow label={t('back_debt_equity')} value={formatMetric(m.debt_to_equity, 'ratio')} />
           <MetricRow label={t('back_current_ratio')} value={formatMetric(m.current_ratio, 'ratio')} />
 
-          <SectionLabel label={t('back_cashflow')} color="#22c55e" />
+          <SectionLabel label={t('back_cashflow')} color="#10b981" />
           <MetricRow label={t('back_fcf')} value={formatMetric(m.free_cashflow, 'dollar')} />
           <MetricRow label={t('back_ocf')} value={formatMetric(m.operating_cashflow, 'dollar')} />
 
@@ -99,7 +99,7 @@ export default function CardBack({ card }: CardBackProps) {
         </div>
 
         {/* Footer */}
-        <p className="text-center text-white/20 text-[10px] mt-2 font-medium">
+        <p className="text-center text-slate-600 text-[10px] mt-2 font-medium">
           {t('back_tap_flip')}
         </p>
       </div>

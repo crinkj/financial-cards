@@ -1,11 +1,11 @@
 {
-  "name": "Stockmon",
-  "short_name": "Stockmon",
-  "description": "Real stocks. Battle stats. Collect the market.",
+  "name": "영차 | Youngcha",
+  "short_name": "영차",
+  "description": "내 투자, 영차로 끌어올리다. 위험은 낮추고, 방향은 올리고.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#050510",
-  "theme_color": "#ffd700",
+  "background_color": "#0F172A",
+  "theme_color": "#10B981",
   "icons": [
     {
       "src": "/icon-192.png",

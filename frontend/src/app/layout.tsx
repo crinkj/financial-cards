@@ -4,10 +4,10 @@ import NavBar from '@/components/NavBar';
 import { LanguageProvider } from '@/lib/LanguageContext';
 
 export const metadata: Metadata = {
-  title: 'Stockmon',
-  description: 'Real stocks. Battle stats. Collect the market.',
+  title: '영차 | Youngcha',
+  description: '내 투자, 영차로 끌어올리다. 위험은 낮추고, 방향은 올리고.',
   manifest: '/manifest.json',
-  themeColor: '#ffd700',
+  themeColor: '#10B981',
   viewport: 'width=device-width, initial-scale=1, maximum-scale=1',
 };
 

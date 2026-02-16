@@ -18,15 +18,15 @@ export default function GradeBadge({ grade, size = 'md', pulse = false }: GradeB
 
   return (
     <div
-      className={`${SIZE_CLASSES[size]} rounded-lg flex items-center justify-center font-black border-2 ${
+      className={`${SIZE_CLASSES[size]} rounded-lg flex items-center justify-center font-black border ${
         pulse && isTop ? 'badge-pulse' : ''
       }`}
       style={{
-        borderColor: color,
+        borderColor: `${color}50`,
         color: color,
-        backgroundColor: `${color}18`,
-        boxShadow: isTop ? `0 0 16px ${color}66, inset 0 0 8px ${color}22` : `0 0 8px ${color}33`,
-        '--badge-color': `${color}88`,
+        backgroundColor: `${color}10`,
+        boxShadow: isTop ? `0 0 12px ${color}33` : 'none',
+        '--badge-color': `${color}66`,
       } as React.CSSProperties}
     >
       {grade}

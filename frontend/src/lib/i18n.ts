@@ -2,34 +2,34 @@ export type Lang = 'ko' | 'en';
 
 export const translations = {
   // Navigation
-  nav_cards: { en: 'Collection', ko: '콜렉션' },
-  nav_rankings: { en: 'Arena', ko: '아레나' },
-  app_title: { en: 'Stockmon', ko: '스톡몬' },
+  nav_cards: { en: 'Collection', ko: '컬렉션' },
+  nav_rankings: { en: 'Rankings', ko: '랭킹' },
+  app_title: { en: 'Youngcha', ko: '영차' },
 
   // Home page
-  hero_title: { en: 'Gotta Catch \'Em All!', ko: '모두 잡아라!' },
+  hero_title: { en: 'Lift Your Investment', ko: '내 투자, 영차로 끌어올리다' },
   hero_subtitle: {
-    en: 'Real stocks. Battle stats. Collect the market.',
-    ko: '실제 주식. 배틀 스탯. 시장을 수집하라.',
+    en: 'Lower the risk. Raise the direction.',
+    ko: '위험은 낮추고, 방향은 올리고.',
   },
-  search_placeholder: { en: 'Search Stockmon...', ko: '스톡몬 검색...' },
-  all_sectors: { en: 'All Types', ko: '전체 타입' },
-  score_label: { en: 'PWR', ko: '전투력' },
-  loading_cards: { en: 'Summoning Stockmons...', ko: '스톡몬 소환 중...' },
+  search_placeholder: { en: 'Search stocks...', ko: '종목 검색...' },
+  all_sectors: { en: 'All Sectors', ko: '전체 섹터' },
+  score_label: { en: 'SCORE', ko: '점수' },
+  loading_cards: { en: 'Analyzing...', ko: '분석 중...' },
   error_load_cards: {
-    en: 'Connection lost! Check if the server is running.',
-    ko: '연결 실패! 서버가 실행 중인지 확인하세요.',
+    en: 'Connection failed. Please check if the server is running.',
+    ko: '연결 실패. 서버가 실행 중인지 확인하세요.',
   },
   empty_cards: {
-    en: 'No Stockmons found. Run batch update to discover them.',
-    ko: '스톡몬을 찾을 수 없습니다. 배치 업데이트를 실행하세요.',
+    en: 'No stocks found. Run batch update to load data.',
+    ko: '종목을 찾을 수 없습니다. 배치 업데이트를 실행하세요.',
   },
 
   // Card front
-  total_score: { en: 'POWER', ko: '전투력' },
+  total_score: { en: 'TOTAL SCORE', ko: '종합점수' },
 
   // Card back
-  back_score: { en: 'PWR', ko: '전투력' },
+  back_score: { en: 'SCORE', ko: '점수' },
   back_growth: { en: 'Growth', ko: '성장' },
   back_revenue_growth: { en: 'Revenue Growth', ko: '매출 성장률' },
   back_earnings_growth: { en: 'Earnings Growth', ko: '이익 성장률' },
@@ -58,35 +58,35 @@ export const translations = {
   radar_efficiency: { en: 'Efficiency', ko: '효율' },
   radar_momentum: { en: 'Momentum', ko: '모멘텀' },
   radar_earnings: { en: 'Earnings', ko: '수익' },
-  // Radar sub-labels (game-style)
-  radar_sub_growth: { en: 'ATK', ko: '공격력' },
-  radar_sub_stability: { en: 'DEF', ko: '방어력' },
-  radar_sub_cashflow: { en: 'MP', ko: '마력' },
-  radar_sub_efficiency: { en: 'INT', ko: '지능' },
-  radar_sub_momentum: { en: 'SPD', ko: '스피드' },
-  radar_sub_earnings: { en: 'HP', ko: '체력' },
+  // Radar sub-labels
+  radar_sub_growth: { en: 'GRW', ko: '성장력' },
+  radar_sub_stability: { en: 'STB', ko: '안정력' },
+  radar_sub_cashflow: { en: 'CSH', ko: '현금력' },
+  radar_sub_efficiency: { en: 'EFF', ko: '효율력' },
+  radar_sub_momentum: { en: 'MTM', ko: '추진력' },
+  radar_sub_earnings: { en: 'ERN', ko: '수익력' },
 
   // Rankings
-  daily_top_10: { en: 'Top 10 Legends', ko: '레전드 Top 10' },
-  sector_champions: { en: 'Type Champions', ko: '타입 챔피언' },
-  rankings_title: { en: 'Arena', ko: '아레나' },
-  rankings_subtitle: { en: 'Who\'s the strongest Stockmon?', ko: '가장 강한 스톡몬은?' },
+  daily_top_10: { en: 'Top 10', ko: 'Top 10' },
+  sector_champions: { en: 'Sector Leaders', ko: '섹터 리더' },
+  rankings_title: { en: 'Rankings', ko: '랭킹' },
+  rankings_subtitle: { en: 'Which stock scores the highest?', ko: '가장 높은 점수의 종목은?' },
   error_load_rankings: {
-    en: 'Failed to load arena.',
-    ko: '아레나를 불러오지 못했습니다.',
+    en: 'Failed to load rankings.',
+    ko: '랭킹을 불러오지 못했습니다.',
   },
 
-  // Sector names (game "type" style)
-  sector_technology: { en: 'Tech', ko: '테크' },
-  sector_healthcare: { en: 'Health', ko: '헬스' },
-  sector_financials: { en: 'Finance', ko: '금융' },
+  // Sector names
+  sector_technology: { en: 'Technology', ko: '테크' },
+  sector_healthcare: { en: 'Healthcare', ko: '헬스케어' },
+  sector_financials: { en: 'Financials', ko: '금융' },
   sector_consumer_disc: { en: 'Consumer', ko: '소비재' },
   sector_consumer_staples: { en: 'Staples', ko: '필수재' },
   sector_energy: { en: 'Energy', ko: '에너지' },
-  sector_industrials: { en: 'Industry', ko: '산업' },
+  sector_industrials: { en: 'Industrials', ko: '산업' },
   sector_communication: { en: 'Comms', ko: '통신' },
-  sector_utilities: { en: 'Utility', ko: '유틸' },
-  sector_real_estate: { en: 'Realty', ko: '부동산' },
+  sector_utilities: { en: 'Utilities', ko: '유틸' },
+  sector_real_estate: { en: 'Real Estate', ko: '부동산' },
   sector_kr_technology: { en: 'KR Tech', ko: '한국 테크' },
   sector_kr_financials: { en: 'KR Finance', ko: '한국 금융' },
   sector_kr_automotive: { en: 'KR Auto', ko: '한국 자동차' },
@@ -127,14 +127,14 @@ export function translateSector(sector: string, lang: Lang): string {
 
 // Emotional tag translation (backend stores Korean)
 const EMOTIONAL_TAG_EN: Record<string, string> = {
-  '성장 괴물': 'Growth Monster',
-  '철벽 방어': 'Iron Wall',
-  '현금 부자': 'Cash King',
-  '효율의 달인': 'Efficiency Lord',
-  '질주 본능': 'Speed Demon',
+  '성장 괴물': 'Growth Leader',
+  '철벽 방어': 'Strong Defense',
+  '현금 부자': 'Cash Rich',
+  '효율의 달인': 'High Efficiency',
+  '질주 본능': 'Strong Momentum',
   '수익 머신': 'Profit Machine',
-  '균형의 마스터': 'Balance Master',
-  '잠재력 충전 중': 'Charging Up...',
+  '균형의 마스터': 'Well Balanced',
+  '잠재력 충전 중': 'Building Potential',
 };
 
 export function translateEmotionalTag(tag: string, lang: Lang): string {
@@ -142,7 +142,7 @@ export function translateEmotionalTag(tag: string, lang: Lang): string {
   return EMOTIONAL_TAG_EN[tag] || tag;
 }
 
-// Grade border gradient CSS (for game card frames)
+// Grade border gradient CSS
 export const GRADE_BORDER_GRADIENT: Record<string, string> = {
   S: 'from-yellow-300 via-amber-500 to-yellow-300',
   A: 'from-purple-400 via-fuchsia-500 to-purple-400',
@@ -153,21 +153,21 @@ export const GRADE_BORDER_GRADIENT: Record<string, string> = {
 
 // Sector type color pills
 export const SECTOR_TYPE_COLORS: Record<string, string> = {
-  'Technology': 'bg-blue-500/30 text-blue-300 border-blue-500/50',
-  'Healthcare': 'bg-pink-500/30 text-pink-300 border-pink-500/50',
-  'Financials': 'bg-emerald-500/30 text-emerald-300 border-emerald-500/50',
-  'Consumer Discretionary': 'bg-orange-500/30 text-orange-300 border-orange-500/50',
-  'Consumer Staples': 'bg-lime-500/30 text-lime-300 border-lime-500/50',
-  'Energy': 'bg-yellow-500/30 text-yellow-300 border-yellow-500/50',
-  'Industrials': 'bg-slate-400/30 text-slate-300 border-slate-400/50',
-  'Communication Services': 'bg-violet-500/30 text-violet-300 border-violet-500/50',
-  'Utilities': 'bg-cyan-500/30 text-cyan-300 border-cyan-500/50',
-  'Real Estate': 'bg-amber-500/30 text-amber-300 border-amber-500/50',
-  'KR_Technology': 'bg-blue-600/30 text-blue-200 border-blue-600/50',
-  'KR_Financials': 'bg-emerald-600/30 text-emerald-200 border-emerald-600/50',
-  'KR_Automotive': 'bg-red-500/30 text-red-300 border-red-500/50',
-  'KR_Bio & Healthcare': 'bg-pink-600/30 text-pink-200 border-pink-600/50',
-  'KR_Consumer & Retail': 'bg-orange-600/30 text-orange-200 border-orange-600/50',
-  'KR_Energy & Materials': 'bg-yellow-600/30 text-yellow-200 border-yellow-600/50',
-  'KR_Industrial': 'bg-slate-500/30 text-slate-200 border-slate-500/50',
+  'Technology': 'bg-blue-500/20 text-blue-300 border-blue-500/30',
+  'Healthcare': 'bg-pink-500/20 text-pink-300 border-pink-500/30',
+  'Financials': 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30',
+  'Consumer Discretionary': 'bg-orange-500/20 text-orange-300 border-orange-500/30',
+  'Consumer Staples': 'bg-lime-500/20 text-lime-300 border-lime-500/30',
+  'Energy': 'bg-yellow-500/20 text-yellow-300 border-yellow-500/30',
+  'Industrials': 'bg-slate-400/20 text-slate-300 border-slate-400/30',
+  'Communication Services': 'bg-violet-500/20 text-violet-300 border-violet-500/30',
+  'Utilities': 'bg-cyan-500/20 text-cyan-300 border-cyan-500/30',
+  'Real Estate': 'bg-amber-500/20 text-amber-300 border-amber-500/30',
+  'KR_Technology': 'bg-blue-600/20 text-blue-200 border-blue-600/30',
+  'KR_Financials': 'bg-emerald-600/20 text-emerald-200 border-emerald-600/30',
+  'KR_Automotive': 'bg-red-500/20 text-red-300 border-red-500/30',
+  'KR_Bio & Healthcare': 'bg-pink-600/20 text-pink-200 border-pink-600/30',
+  'KR_Consumer & Retail': 'bg-orange-600/20 text-orange-200 border-orange-600/30',
+  'KR_Energy & Materials': 'bg-yellow-600/20 text-yellow-200 border-yellow-600/30',
+  'KR_Industrial': 'bg-slate-500/20 text-slate-200 border-slate-500/30',
 };

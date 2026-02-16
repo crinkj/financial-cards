@@ -9,19 +9,6 @@ interface SectorChampionsProps {
   champions: SectorChampionType[];
 }
 
-const SECTOR_ICONS: Record<string, string> = {
-  'Technology': '💻',
-  'Healthcare': '🧬',
-  'Financials': '🏦',
-  'Consumer Discretionary': '🛍️',
-  'Consumer Staples': '🛒',
-  'Energy': '⚡',
-  'Industrials': '⚙️',
-  'Communication Services': '📡',
-  'Utilities': '💡',
-  'Real Estate': '🏗️',
-};
-
 export default function SectorChampions({ champions }: SectorChampionsProps) {
   const { t, lang } = useLanguage();
 
@@ -30,34 +17,32 @@ export default function SectorChampions({ champions }: SectorChampionsProps) {
       {champions.map((champ, index) => {
         const grade = champ.grade as Grade;
         const color = GRADE_COLORS[grade] || GRADE_COLORS.D;
-        const icon = SECTOR_ICONS[champ.sector] || '📊';
         const typeColor = SECTOR_TYPE_COLORS[champ.sector] || 'bg-white/10 text-white/60 border-white/20';
 
         return (
           <div
             key={champ.sector}
-            className="card-grid-item relative rounded-xl p-4 transition-all hover:scale-[1.02]"
+            className="card-grid-item rounded-xl p-4 transition-all hover:scale-[1.01]"
             style={{
-              animationDelay: `${index * 0.06}s`,
-              background: `linear-gradient(145deg, ${color}0c 0%, rgba(15,15,35,0.9) 100%)`,
-              border: `1px solid ${color}20`,
+              animationDelay: `${index * 0.05}s`,
+              background: '#1E293B',
+              border: '1px solid rgba(51, 65, 85, 0.6)',
             }}
           >
             {/* Sector header */}
             <div className="flex items-center gap-2 mb-3">
-              <span className="text-xl">{icon}</span>
               <span className={`type-pill ${typeColor}`}>
                 {translateSector(champ.sector, lang)}
               </span>
               <div className="flex-1" />
-              <span className="text-[10px] text-white/20 font-bold uppercase tracking-wider">Champion</span>
+              <span className="text-[10px] text-slate-600 font-semibold uppercase tracking-wider">Leader</span>
             </div>
 
             {/* Champion info */}
             <div className="flex items-center justify-between">
               <div className="min-w-0 flex-1">
-                <p className="text-white font-black text-sm truncate">
-                  {champ.company_name} <span className="text-white/30 font-bold">({champ.ticker})</span>
+                <p className="text-white font-semibold text-sm truncate">
+                  {champ.company_name} <span className="text-slate-500">({champ.ticker})</span>
                 </p>
               </div>
               <div className="flex items-center gap-3 ml-2">

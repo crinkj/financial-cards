@@ -31,10 +31,9 @@ export default function RankingsPage() {
 
   return (
     <div>
-      <div className="text-center mb-8 pt-2">
-        <span className="text-4xl">🏟️</span>
-        <h1 className="text-gradient-gold font-black text-3xl mt-2">{t('rankings_title')}</h1>
-        <p className="text-white/40 text-sm mt-1">{t('rankings_subtitle')}</p>
+      <div className="text-center mb-8 pt-6">
+        <h1 className="text-white font-black text-3xl">{t('rankings_title')}</h1>
+        <p className="text-slate-400 text-sm mt-1">{t('rankings_subtitle')}</p>
       </div>
 
       {/* Tabs */}
@@ -43,27 +42,30 @@ export default function RankingsPage() {
           <button
             key={tab}
             onClick={() => setActiveTab(tab)}
-            className={`px-5 py-2.5 rounded-xl text-sm font-bold transition-all ${
+            className={`px-5 py-2.5 rounded-xl text-sm font-semibold transition-all ${
               activeTab === tab
-                ? 'bg-gradient-to-r from-amber-500/20 to-orange-500/20 text-amber-400 border border-amber-500/30'
-                : 'bg-white/5 text-white/40 hover:text-white/60 border border-transparent'
+                ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/30'
+                : 'bg-slate-800/60 text-slate-400 hover:text-slate-300 border border-slate-700'
             }`}
           >
-            {tab === 'top10' ? `🏆 ${t('daily_top_10')}` : `⚔️ ${t('sector_champions')}`}
+            {tab === 'top10' ? t('daily_top_10') : t('sector_champions')}
           </button>
         ))}
       </div>
 
       {loading && (
         <div className="text-center py-24">
-          <div className="inline-block text-4xl loader-game">⚡</div>
+          <div className="inline-block loader-spin text-emerald-500">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+              <path d="M12 2 A10 10 0 0 1 22 12" />
+            </svg>
+          </div>
         </div>
       )}
 
       {error && (
         <div className="text-center py-24">
-          <span className="text-3xl">💥</span>
-          <p className="text-red-400 text-sm mt-3">{t('error_load_rankings')}</p>
+          <p className="text-red-400 text-sm">{t('error_load_rankings')}</p>
         </div>
       )}
 
